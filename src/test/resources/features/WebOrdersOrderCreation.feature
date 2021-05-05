@@ -1,4 +1,4 @@
-@HR-6
+@HR-6 @ui
 Feature: Validating order creation functionality
 
   Background: These steps will run before each scenario

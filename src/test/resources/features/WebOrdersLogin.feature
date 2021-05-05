@@ -1,4 +1,4 @@
-@HR-7
+@HR-7 @ui
 
 Feature: Validating login functionality.
 

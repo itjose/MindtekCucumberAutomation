@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.EtsyHomePage;
+import utilities.BrowserUtils;
 import utilities.Configuration;
 import utilities.Driver;
 
@@ -51,6 +52,39 @@ public class EtsyAppSteps {
             Assert.assertTrue(itemDescription, isFound);
         }
 
+    }
+
+    @When("User selects price range more than {int}")
+    public void user_selects_price_range_more_than(Integer priceRange) {
+
+        etsyHomePage.filtersButton.click();
+        BrowserUtils.scroll(600);
+        etsyHomePage.over1000.click();
+        etsyHomePage.applyButton.click();
+
+    }
+
+    @Then("User validates price range is more than {int}")
+    public void user_validates_price_range_is_more_than(Integer priceRange) {
+
+        for(int i=0; i<etsyHomePage.prices.size(); i++ ){
+            String price = etsyHomePage.prices.get(i).getText();
+            price=price.replace(",", "");
+            //prices = 1,500.00
+            //convert string to double
+            double actualPrice = Double.parseDouble(price);
+            Assert.assertTrue(actualPrice>=priceRange);
+
+        }
+    }
+
+    @When("User clicks on Art & Collectibles module")
+    public void user_clicks_on_Art_Collectibles_module() {
+
+    }
+
+    @Then("User validates title Art & Collectibles | Etsy")
+    public void user_validates_title_Art_Collectibles_Etsy() {
 
     }
 
